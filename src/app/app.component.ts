@@ -16,7 +16,7 @@ export class AppComponent {
 
   selectedEvento: Evento = new Evento();
 
-  addOrEdit(){
+  addOrEdit() {
     this.selectedEvento.id = this.eventoArray.length + 1;
     this.eventoArray.push(this.selectedEvento);
   }
