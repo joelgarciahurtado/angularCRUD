@@ -16,9 +16,23 @@ export class AppComponent {
 
   selectedEvento: Evento = new Evento();
 
+  openForEdit(evento: Evento) {
+    this.selectedEvento = evento;
+  }
+
   addOrEdit() {
-    this.selectedEvento.id = this.eventoArray.length + 1;
-    this.eventoArray.push(this.selectedEvento);
+    if (this.selectedEvento.id === 0) {
+      this.selectedEvento.id = this.eventoArray.length + 1;
+      this.eventoArray.push(this.selectedEvento);
+    }
+    this.selectedEvento = new Evento();
+  }
+
+  delete() {
+    if (confirm('Estás seguro que deseas eliminar el evento?')) {
+      this.eventoArray = this.eventoArray.filter(x => x != this.selectedEvento);
+      this.selectedEvento = new Evento();
+    }
   }
 
 }
